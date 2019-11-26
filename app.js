@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const moviesRoutes = require('./routes/moviesRoutes');
+const userMoviesRoutes = require('./routes/userMoviesRoutes');
 const authRoutes = require('./routes/authRoutes');
 const mongoose = require('mongoose');
 const config = require('./config/config');
@@ -19,6 +20,7 @@ app.use((req,res,next) => {
 
 app.use('/movies',moviesRoutes);
 app.use('/auth',authRoutes);
+app.use('/user/movies',userMoviesRoutes);
 
 
 mongoose.connect(config.urlMongo, {useUnifiedTopology: true, useNewUrlParser: true })

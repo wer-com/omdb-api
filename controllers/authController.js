@@ -23,6 +23,9 @@ exports.signup = (req,res,next) => {
         res.status(201).send({ message: 'User created!', userId: result._id})
     })
     .catch(error => {
+        if(!error.statusCode){
+            error.statusCode = 500;
+        }
         return res.status(error.statusCode).send({ error: error.message });
     });
 };
@@ -46,6 +49,9 @@ exports.login = (req,res,next) => {
         res.status(200).send({ token: token, userId: loadedUser._id.toString() });
     })
     .catch(error => {
+        if(!error.statusCode){
+            error.statusCode = 500;
+        }
         return res.status(error.statusCode).send({ error: error.message });
     });
 }

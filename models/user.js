@@ -15,10 +15,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    time: { 
-        type: Date,
-        default: Date.now
-    }
+    movies: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Movie'
+        }
+    ]
 });
 
 module.exports = mongoose.model('User',userSchema);

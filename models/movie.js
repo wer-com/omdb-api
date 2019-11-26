@@ -58,12 +58,6 @@ const movieSchema = new Schema({
         type: String,
         required: true
     },
-    Ratings:[
-        {
-            source:String,
-            value:String
-        }
-    ],
     Metascore:{
         type: String,
         required: true
@@ -86,6 +80,11 @@ const movieSchema = new Schema({
     },
     Response:{
         type: String,
+        required: true
+    },
+    User:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 });
