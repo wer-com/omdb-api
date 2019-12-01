@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const Movie = require('../models/movie');
 
-exports.postMovies = async (req, res, next) => {
+exports.postUserMovies = async (req, res, next) => {
     const {userId} = req;
     const {body} = req;
     const movie = new Movie({ 
@@ -25,7 +25,7 @@ exports.postMovies = async (req, res, next) => {
     }   
 }
 
-exports.getMovies = async (req,res,next) => {
+exports.getUserMovies = async (req,res,next) => {
     const {userId} = req;
     
     const movies = await Movie.find({ User: userId });
@@ -37,7 +37,7 @@ exports.getMovies = async (req,res,next) => {
     return res.status(200).send({ movies });
 }
 
-exports.getMovie = async (req,res,next) => {
+exports.getUserMovie = async (req,res,next) => {
     const {userId} = req;
     const {id} = req.params;
 
@@ -50,7 +50,7 @@ exports.getMovie = async (req,res,next) => {
     return res.status(200).send({ movie });
 }
 
-exports.deleteMovie = async (req,res,next) => {
+exports.deleteUserMovie = async (req,res,next) => {
     const {userId} = req;
     const {id} = req.params;
     try{
