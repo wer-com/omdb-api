@@ -22,7 +22,6 @@ app.use('/movies',moviesRoutes);
 app.use('/auth',authRoutes);
 app.use('/user/movies',userMoviesRoutes);
 
-
 mongoose.connect(config.urlMongo, {useUnifiedTopology: true, useNewUrlParser: true })
 .then(result =>{
     app.listen(PORT);

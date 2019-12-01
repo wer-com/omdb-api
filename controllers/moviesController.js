@@ -12,7 +12,8 @@ exports.getMovies = async (req,res,next) =>{
     } 
     catch (error) {
         if(!error.statusCode){
-            error.statusCode = 500;
+            error.statusCode = 429;
+            error.message?error.message:error.message = "Too Many Requests";
         }
         return res.status(error.statusCode).send({ error: error.message });
     }
@@ -26,7 +27,8 @@ exports.getMovie = async (req,res,next) =>{
     } 
     catch (error) {
         if(!error.statusCode){
-            error.statusCode = 500;
+            error.statusCode = 429;
+            error.message?error.message:error.message = "Too Many Requests";
         }
         return res.status(error.statusCode).send({ error: error.message });
     }
